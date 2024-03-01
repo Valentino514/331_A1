@@ -21,15 +21,60 @@ Assignment 1}
 \begin{spacing}{1.5}
 \begin{document}
 \maketitle
-
-
-
 \newpage
-\noindent \textbf{Problem 1}\\
-\noindent To check if the proposition is true, we need to turn over all blue cards, and all number cards that do not have a prime number. This is because we need to check if blue cards have indeed a prime number on the other side and we need to check if number cards that do not have a prime number also do not have blue on the other side. Therefore, we need to turn over the card with the number 9, because 9 is not prime, we do not need to turn over the card with the number 11, because 11 is prime, we need to turn over the blue card, because it is blue, and we do not need to turn over the yellow card, because it is not blue.
-\\
-\\
-\noindent \textbf{Problem 4}\\
+\section*{Problem 1}
+To check if the proposition is true, we need to turn over all blue cards, and all number cards that do not have a prime number.
+ This is because we need to check if blue cards have indeed a prime number on the other side and we need to check if number cards 
+ that do not have a prime number also do not have blue on the other side. Therefore, we need to turn over the card with the number 9,
+  because 9 is not prime, we do not need to turn over the card with the number 11, because 11 is prime, we need to turn over the blue
+   card, because it is blue, and we do not need to turn over the yellow card, because it is not blue.
+\section*{Problem 2}
+\subsection*{part 1}
+\begin{enumerate}
+	\item  x is an object, Planet(x) denotes that x is a planet.\\ MassGreaterThan(x,m) denotes the mass of m is greater than m.\\ OrbitsSun(x) denotes
+	that x orbits the Sun.\\ The formla for a planet in predicate logic becomes:\\
+	$\forall x ((\text{MassGreaterThan}(x, 0.33) \land \text{OrbitsSun}(x)) \rightarrow \text{Planet}(x))$
+	\\
+	\\Using the formula for planet we can construct the binary relation to find the which ones are satellites.
+	\\ SatelliteOf(x,y) denotes that object x is the satellite of object y
+	\\ Orbits(x,y) denotes that x orbits around y
+	\\ Planet(y) denotes that y is a planet (using the previous predicate logic)
+	\\The formula in predicate logic is:
+	\\ $\forall x \forall y (Orbits(x, y) \land Planet(y)) \rightarrow (SatelliteOf(x, y))$
+	\item \texttt{is\_planet(X) :- mass(X, Mass), Mass > 0.33, orbits(X, sun).}
+	\\
+	\texttt{is\_satellite\_of(X, Y) :- orbits(X, Y), is\_planet(Y).}
+	\\Code sample and examples included in the solar.pl file
+	\item \texttt{obtain\_all\_satellites(Object,List) :- is\_planet(Object),
+	findall(S, orbits(S, Object) , List).}
+	\\Code sample with examples included in solar.pl file
+    \end{enumerate}
+	\subsection*{part 2}
+	\begin{enumerate}
+		\item Some numbers are not composite (Particular Negative):
+		\[ \exists x (\text{number}(x) \land \neg \text{composite}(x)) \]
+		
+		\item No numbers are prime (Universal Affirmative):
+		\[ \forall x (\text{number}(x) \rightarrow \text{composite}(x)) \]
+		
+		\item Some numbers are not prime (Particular Affirmative):
+		\[ \exists x (\text{number}(x) \land \text{composite}(x)) \]
+		
+		\item All numbers are prime (Universal Negative):
+		\[ \forall x (\text{number}(x) \rightarrow \neg \text{composite}(x)) \]
+	\end{enumerate}
+
+	\subsection*{part 3}
+	\begin{enumerate}
+		\item The process of negating a statement corresponds to negating the predicate and changing the quantifier (de Morgan's Law, applicable in vice versa).
+		Therefore, negating $(\forall s: S| s \in P)$ will negate the predicate and change the quantifier, which results in 
+		$\exists s : S | \neg(s \in P)$. This become particular ($\exists s$) negative $\neg(s \in P$).
+		\item The type E proposition is $\forall s : S |\neg(s \in P)$. By negating it, we apply De Morgan's law where we convert the
+		universtal statement into an existential one and we negate the predicate (applicable in vice versa). this results in obtaining I since the statement is 
+		now existential ($\exists s$) and the predicate is now double negative which becomes a positive $(s \in P)$. 
+	\end{enumerate}
+
+\section*{Problem 4}
 \begin{enumerate}
 \item $\mathbb{P}Languages$ is the power set of the $Languages$ set. That means that it is the set comprised of all the possible combinations of items inside $Languages$. These items are combined into sets themselves. 
 \item 
@@ -75,7 +120,7 @@ CL-USER 6 > (equal-setsp '(b c d a) '(b c d a 2))
 NIL
 \end{verbatim}
 \end{enumerate}
-\noindent \textbf{Problem 6}\\
+\section*{Problem 6}
 \noindent\underline{Part 1}\\
 \begin{enumerate}
 \item In java, the "is of type" relation is of partial order. If a variable is of a certain type, then it is obviously itself of that type, making this a reflexive relation. This is an antisymmetric relation, because if a variable $V_{1}$ is of a parent type to another variable $V_{2}$,   $V_{2}$ can not be a parent type of $V_{1}$. The Java API does not support cyclic inheritance. This relation is transitive, because if type A is the parent tpye of type B, and type B is the parent type of type C, then C automatically inherits from A. A type that inherits from a second type is also of the second type. Any relation that is reflexive, antisymmetric, and transitive is of partial order, therefore the "is of type" relation for the Java API is of partial order.
